@@ -9,7 +9,7 @@ function Landing() {
             <div className="w-full rounded-md p-16 flex flex-col justify-center items-center h-4/6">
               <h1
                 className="font-CerealXBd lg:text-5xl text-3xl mb-6 bg-gradient-to-r bg-clip-text text-transparent
-                        from-emerald-500 via-indigo-500 to-emerald-500
+                        from-emerald-500 via-indigo-500 to-emerald-500 font-bold
                         animate-text"
               >
                 SHEETS.AI
@@ -28,11 +28,11 @@ function Landing() {
                 <div className="px-4">
                 <div className="flex items-center justify-between">
                     <p className="text-sm tracking-wider">
-                    &copy; 2023 [Company Name]
+                    &copy; DDL 2023
                     </p>
                     <ul className="flex">
                     <li>
-                        <a className="text-sm tracking-wider px-2" href="#">
+                        <a className="text-sm tracking-wider px-2" href="https://longo.land/">
                         About
                         </a>
                     </li>

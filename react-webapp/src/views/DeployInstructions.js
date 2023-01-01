@@ -1,4 +1,5 @@
 import React from "react";
+import { BACKEND_ENDPOINT } from '../constant';
 
 function DeployInstructions({modelInfo, requiredInputs}) {
 
@@ -13,7 +14,7 @@ function DeployInstructions({modelInfo, requiredInputs}) {
             <div className="flex flex-1 flex-row">
             <div className="mt-4">
                 <p className="text-center w-36 font-bold">Test it out</p>
-                <form action={`http://localhost:8000/train/predict/`} method="GET" target="_blank" className="flex-col flex flex-1 w-36 items-center ml-8">
+                <form action={`${BACKEND_ENDPOINT}/train/predict/`} method="GET" target="_blank" className="flex-col flex flex-1 w-36 items-center ml-8">
                     <input type="hidden" name="modelId" value={modelInfo.modelId}/>
                     {modelInfo.inputs.map((input, index) => (
                         <div>

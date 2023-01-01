@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { getPredictableColumns, getValidInputColumns } from "../utils/validArrayColumns";
 import { MutatingDots } from "react-loader-spinner";
+import { BACKEND_ENDPOINT } from '../constant';
 
 function DataTable({array, modelInfo, setModelInfo, nextStep}) {
     const [predictColumn, setPredictColumn] = useState(null);
@@ -69,7 +70,7 @@ function DataTable({array, modelInfo, setModelInfo, nextStep}) {
                 inputColumns: inputColumns
         })
         }
-        let request = new Request('http://localhost:8000/train/', requestOptions);
+        let request = new Request(`${BACKEND_ENDPOINT}/train/`, requestOptions);
         let response = await fetch(request)
         setIsLoading(false);
         if (response.status === 200) {

@@ -9,6 +9,8 @@ origins = [
     "http://localhost:3000",
     "https://localhost:3000",
     "http://localhost:8080",
+    "http://sheets-ai-flame.vercel.app/",
+    "https://sheets-ai-flame.vercel.app/",
 ]
 
 app.add_middleware(
@@ -20,3 +22,4 @@ app.add_middleware(
 )
 
 app.include_router(train.router, prefix="/train")
+
