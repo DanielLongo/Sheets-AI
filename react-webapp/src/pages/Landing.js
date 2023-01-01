@@ -42,12 +42,12 @@ function Landing() {
                         </a>
                     </li>
                     <li>
-                        <a className="text-sm tracking-wider px-2" href="#">
-                        Careers
+                        <a className="text-sm tracking-wider px-2" href="https://github.com/DanielLongo/Sheets-AI">
+                        Github
                         </a>
                     </li>
                     <li>
-                        <a className="text-sm tracking-wider px-2" href="#">
+                        <a className="text-sm tracking-wider px-2" href="https://longo.land/">
                         Contact
                         </a>
                     </li>
