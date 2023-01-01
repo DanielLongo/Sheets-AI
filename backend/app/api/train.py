@@ -41,8 +41,7 @@ async def train(request: Request):
     ).hexdigest()
     model_blob = models_bucket.blob(f"model-{model_id}.pkl")
     model_blob.upload_from_string(res["model_bytes"])
-
-
+    
     return {"modelId": model_id, "accuracy": res["accuracy"], "inputs": inputs}
 
 def cast_params_to_float(params):
