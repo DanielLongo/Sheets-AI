@@ -24,7 +24,7 @@ function Landing() {
             <div>
             </div>
             <div className="w-full h-full items-center justify-center flex">
-            <iframe className="w-[555px] h-[333px]" src="https://www.loom.com/embed/2021a3c573624235ba4407e2c1d625c6" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <iframe className="w-[555px] h-[333px]" src="https://www.loom.com/embed/2021a3c573624235ba4407e2c1d625c6" frameborder="0" webkitAllowFullScreen={true} mozAllowFullScreen={true} allowFullScreen={true}></iframe>
             </div>
           </div>
         </section>
