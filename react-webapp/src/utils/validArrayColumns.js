@@ -1,8 +1,4 @@
 const valueIsBinary = (value) => {
-    if (value === undefined) {
-        return true;
-    }
-    value = value.toString().toLowerCase();
     if (value === "0" || value === "1") {
         return true;
     }
@@ -20,6 +16,9 @@ const missingValue = (value) => {
     return (value === "" || value === null || value === undefined) 
 };
 
+const preProccessValue = (value) => {
+    return value.toString().toLowerCase().replaceAll("[\\n\\r\\t]+", "").trim()
+}
 
 export const getPredictableColumns = (array, headerKeys) => {
     // return array of all header keys that are binary values (0 or 1) or (true or false)
@@ -30,7 +29,15 @@ export const getPredictableColumns = (array, headerKeys) => {
         let isBinary = true;
         for (let j = 0; j < array.length; j++) {
             let value = array[j][column];
+            if (value === undefined) {
+                continue
+            }
+            value = preProccessValue(value);
+            if (column === "DQFlag ") {
+                console.log("DQ", value);
+            }
             if (!valueIsBinary(value)) {
+                console.log("not binary", column, value, typeof value);
                 isBinary = false;
                 break;
             }
@@ -50,12 +57,18 @@ export const getValidInputColumns = (array, headerKeys) => {
 
     for (let i = 0; i < headerKeys.length; i++) {
         let isNumeric = true;
+        let column = headerKeys[i];
 
         for (let j = 0; j < array.length; j++) {
-        if (!valueIsNumeric(array[j][i]) && !valueIsBinary(array[j][i])) {
-            isNumeric = false;
-            break;
-        }
+            let value = array[j][column];
+            if (value === undefined) {
+                continue
+            }
+            value = preProccessValue(value);
+            if (!valueIsNumeric(value) && !valueIsBinary(value)) {
+                isNumeric = false;
+                break;
+            }
         }
 
         if (isNumeric) {

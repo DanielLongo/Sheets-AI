@@ -152,7 +152,7 @@ function DataTable({array, modelInfo, setModelInfo, nextStep}) {
                                 <div className="ml-2">Input Value</div>
                             </div>
                             <div className="flex flex-row items-center">
-                                <div className="w-4 h-4 bg-slate-300"></div>
+                                <div className="w-4 h-4 bg-yellow-200 border-slate-200"></div>
                                 <div className="ml-2">Ignore values (non numeric)</div>
                             </div>
                         </div>
@@ -200,7 +200,7 @@ function DataTable({array, modelInfo, setModelInfo, nextStep}) {
                             
                             <tr key={item.id}>
                                 {Object.values(item).map((value, index) => (
-                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${headerKeys[index] === predictColumn ? "bg-green-100" : inputColumns.includes(headerKeys[index]) ? "bg-blue-50" : ""}`}>{value}</td>
+                                    <td className={`whitespace-nowrap px-3 py-4 text-sm text-gray-500 ${headerKeys[index] === predictColumn ? "bg-green-100" : inputColumns.includes(headerKeys[index]) ? "bg-blue-50" : "bg-yellow-50"}`}>{value}</td>
                                 ))}
                             </tr>
 

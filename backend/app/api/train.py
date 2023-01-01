@@ -16,13 +16,19 @@ async def train(request: Request):
     df = pd.DataFrame(request_body["dataArray"])
     prediction_value = request_body["predictColumn"]
     inputs = request_body["inputColumns"]
+
+    # prediction cannot be an input
     if prediction_value in inputs:
         inputs.remove(prediction_value)
 
+    # clean up blemishes in the data
     df = df.dropna()
 
+    for header in df.columns:
+        df[header] = df[header].apply(clean_inputs)
+
     # cast prediction to boolean
-    df[prediction_value] = df[prediction_value].apply(lambda x: str(x).lower() == "true" or str(x) == "1")
+    df[prediction_value] = df[prediction_value].apply(lambda x: str(x) == "true" or str(x) == "1")
     df[prediction_value] = df[prediction_value].astype(bool)
 
     # cast inputs to float
@@ -41,8 +47,14 @@ async def train(request: Request):
     ).hexdigest()
     model_blob = models_bucket.blob(f"model-{model_id}.pkl")
     model_blob.upload_from_string(res["model_bytes"])
-    
+
     return {"modelId": model_id, "accuracy": res["accuracy"], "inputs": inputs}
+
+def clean_inputs(x):
+    x = x.replace("\n", "").replace("\r", "").replace("\t", "")
+    x = x.strip().lower()
+    return x
+
 
 def cast_params_to_float(params):
     for key, value in params.items():
